@@ -1,7 +1,15 @@
-.container {
-  padding: 20px 30px 20px 30px;
+.headerArea {
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: fixed;
+}
+
+.headerContainer {
   display: flex;
   justify-content: space-between;
+  padding: 20px 30px 20px 30px;
 
   nav {
     font-size: 24px;
