@@ -12,7 +12,13 @@ export const Header: React.FC = () => {
   return (
     <header className={styles.container}>
       <h1 onClick={() => router.push("/")}>
-        <Image src={Logo} width={150} height={60} alt="Lamina Logo"></Image>
+        <Image
+          src={Logo}
+          width={150}
+          height={60}
+          alt="Lamina Logo"
+          priority
+        ></Image>
       </h1>
       <nav>
         <ul>
