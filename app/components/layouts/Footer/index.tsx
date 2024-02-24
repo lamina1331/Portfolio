@@ -1,6 +1,7 @@
 "use client";
 
-import styles from "@/components/Footer/index.module.scss";
+import Link from "next/link";
+import styles from "./index.module.scss";
 import { useRouter } from "next/navigation";
 
 export const Footer: React.FC = () => {
@@ -11,9 +12,15 @@ export const Footer: React.FC = () => {
       <h1 onClick={() => router.push("/")}>Footer</h1>
       <nav>
         <ul>
-          <li>{/* Home Work Profile を作成予定 */}Home</li>
-          <li>{/* Home Work Profile を作成予定 */}Work</li>
-          <li>{/* Home Work Profile を作成予定 */}Profile</li>
+          <li>
+            <Link href="/">Home</Link>
+          </li>
+          <li>
+            <Link href="/Works">Works</Link>
+          </li>
+          <li>
+            <Link href="/Profile">Profile</Link>
+          </li>
         </ul>
       </nav>
     </footer>
