@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+import Logo from "@/public/img/logo.png";
 import styles from "./index.module.scss";
 import { useRouter } from "next/navigation";
 
@@ -9,7 +11,9 @@ export const Header: React.FC = () => {
 
   return (
     <header className={styles.container}>
-      <h1 onClick={() => router.push("/")}>Header</h1>
+      <h1 onClick={() => router.push("/")}>
+        <Image src={Logo} width={150} height={60} alt="Lamina Logo"></Image>
+      </h1>
       <nav>
         <ul>
           <li>
