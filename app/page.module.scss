@@ -1,0 +1,36 @@
+$col_main: #45b6d8;
+$col_bk: #333;
+$col_wh: #f3f3f3;
+
+.main {
+  .hero {
+    width: 100vw;
+    height: 100vh;
+    color: $col_bk;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    a {
+      margin-top: 12px;
+      padding: 5px 20px;
+      border: 1px solid $col_bk;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        background-color: $col_bk;
+        color: $col_wh;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .about {
+    width: 100vw;
+    height: 100vh;
+    background-color: $col_main;
+    color: $col_bk;
+  }
+}
