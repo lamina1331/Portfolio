@@ -1,8 +1,26 @@
 import Image from "next/image";
 import styles from "./page.module.scss";
 import Link from "next/link";
+import { createClient } from "microcms-js-sdk";
 
-export default async function Home(work: any) {
+async function getContents() {
+  const client = createClient({
+    serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN!,
+    apiKey: process.env.MICROCMS_API_KEY!,
+  });
+
+  const response = await client.getList({
+    customRequestInit: {
+      cache: "no-store", // キャッシュを利用せずに常に新しいデータを取得する
+    },
+    endpoint: "works",
+  });
+
+  return response.contents;
+}
+
+export default async function Home() {
+  const contents = await getContents();
   return (
     <main className={styles.main}>
       <section className={styles.hero}>
@@ -13,7 +31,13 @@ export default async function Home(work: any) {
       <section className={styles.about}>
         <h2>Works</h2>
         {/* ここにsecを追加していく News Information About me Works（Preview） Contactなど*/}
-        <section id="Works"></section>
+        <section id="Works">
+          <ul>
+            {contents.map((work) => {
+              return <li key={work.id}>{work.title}</li>;
+            })}
+          </ul>
+        </section>
       </section>
     </main>
   );
