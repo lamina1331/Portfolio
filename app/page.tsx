@@ -9,7 +9,7 @@ export default function Home() {
     <main className={styles.main}>
       <section className={styles.hero}>
         <h1>Lamina Portfolio</h1>
-        <p>Creative and Technology</p>
+        <p>Designer & Web developper & Project Manager</p>
         <Link href="#Works">View Works</Link>
       </section>
       <section className={styles.about}>
