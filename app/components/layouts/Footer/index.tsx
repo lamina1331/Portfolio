@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+import Logo from "../../../../public/img/Logo.png";
 import styles from "./index.module.scss";
 import { useRouter } from "next/navigation";
 
@@ -9,7 +11,6 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className={styles.container}>
-      <h1 onClick={() => router.push("/")}>Footer</h1>
       <nav>
         <ul>
           <li>
@@ -21,8 +22,14 @@ export const Footer: React.FC = () => {
           <li>
             <Link href="/Profile">Profile</Link>
           </li>
+          <li>
+            <Link href="/Profile/#Contact">Contact</Link>
+          </li>
         </ul>
       </nav>
+      <p>
+        <small>&copy;2018 Lamina.</small>
+      </p>
     </footer>
   );
 };

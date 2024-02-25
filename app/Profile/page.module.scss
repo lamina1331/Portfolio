@@ -1,31 +1,46 @@
 $col_main: #45b6d8;
 
-.info {
+.top {
   display: flex;
   justify-content: center;
   margin-top: 30vh;
   width: 100%;
-  height: 70vh;
+  height: 50vh;
 
   .photo {
-    padding: 2vw;
+    padding: 0 16px;
     img {
       width: 100%;
       max-width: 18vw;
       height: auto;
     }
   }
-  .profile {
-    padding: 2vw;
+  .info {
+    padding: 0 16px;
     width: 36vw;
     text-align-last: left;
+  }
 
-    h2 {
-      color: $col_main;
-    }
+  .desc {
+    margin-top: 2vh;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+}
 
-    p {
-      white-space: nowrap;
-    }
+.aboutMe {
+  text-align: center;
+
+  section {
+    margin: 2vh 0;
+  }
+
+  .skillfield {
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+
+  .skills {
+    margin-bottom: 1vh;
   }
 }
