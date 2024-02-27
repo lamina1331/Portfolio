@@ -11,7 +11,7 @@ async function getContents() {
 
   const response = await client.getList({
     customRequestInit: {
-      cache: "no-store", // キャッシュを利用せずに常に新しいデータを取得する
+      cache: "no-store",
     },
     endpoint: "works",
   });
@@ -34,7 +34,17 @@ export default async function Home() {
         <section id="Works">
           <ul>
             {contents.map((work) => {
-              return <li key={work.id}>{work.title}</li>;
+              return (
+                <li key={work.id}>
+                  <Image
+                    className={styles.thumbImg}
+                    src={work.thumb.url}
+                    alt={work.title}
+                    width={work.thumb.width}
+                    height={work.thumb.height}
+                  />
+                </li>
+              );
             })}
           </ul>
         </section>
