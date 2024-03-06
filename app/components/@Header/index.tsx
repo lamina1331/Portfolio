@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "../../../../public/img/Logo.png";
+import Logo from "../../../public/img/Logo.png";
 import styles from "./index.module.scss";
 import { useRouter } from "next/navigation";
 
