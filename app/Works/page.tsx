@@ -1,53 +1,45 @@
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./index.module.scss";
-import { createClient } from "microcms-js-sdk";
+import styles from "./page.module.scss";
+import { client } from "../../@libs/microcms";
+import type {
+  MicroCMSQueries,
+  MicroCMSImage,
+  MicroCMSDate,
+} from "microcms-js-sdk";
 
-async function getContents() {
-  const client = createClient({
-    serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN!,
-    apiKey: process.env.MICROCMS_API_KEY!,
-  });
+export type Works = {
+  id: string;
+  title: string;
+  thumb: MicroCMSImage;
+  top: object;
+  info: string;
+  tag: string[];
+  desc: object;
+  img: MicroCMSImage[];
+} & MicroCMSDate;
 
+export const getWorks = async (): Promise<Works[]> => {
   const response = await client.getList({
     customRequestInit: {
       cache: "no-store",
     },
     endpoint: "works",
-    queries: { limit: 3, orders: "-publishedAt" },
   });
 
   return response.contents;
-}
-
-async function getModal(workId: string) {
-  const client = createClient({
-    serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN!,
-    apiKey: process.env.MICROCMS_API_KEY!,
-  });
-
-  const response = await client.get({
-    customRequestInit: {
-      cache: "no-store",
-    },
-    endpoint: "works",
-    contentId: workId,
-    queries: { limit: 1, orders: "-publishedAt" },
-  });
-
-  return response.contents;
-}
+};
 
 export default async function Works() {
-  const contents = await getContents();
-  console.log(contents);
+  const contents = await getWorks();
   return (
-    <div>
+    <main>
       <h1>Worksページ</h1>
+      {/* ここにcontent.idに応じたモーダルを追加 */}
       <ul>
         {contents.map((content) => (
           <li key={content.id}>
-            <Link href={`/Works/${content.id}`}>
+            <button>
               <Image
                 src={content.thumb.url}
                 alt={content.title}
@@ -56,10 +48,10 @@ export default async function Works() {
                 priority
               />
               <h2>{content.title}</h2>
-            </Link>
+            </button>
           </li>
         ))}
       </ul>
-    </div>
+    </main>
   );
 }
